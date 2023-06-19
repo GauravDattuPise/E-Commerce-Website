@@ -82,3 +82,9 @@ export const loginUser = async (req,res) => {
         res.status(500).send({status : false,  message : error.message})  
     }
 }
+
+//test controller
+
+export const testController = async (req,res) => {
+    res.send("protected route");
+}
