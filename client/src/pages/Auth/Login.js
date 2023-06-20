@@ -5,11 +5,13 @@ import "../../styles/AuthStyles.css"
 import toast from 'react-hot-toast';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/Auth';
 
 const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [auth, setAuth] = useAuth();
 
     const navigate = useNavigate();
 
@@ -17,18 +19,24 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await axios.post("http://localhost:5000/loginUser", { email, password })
-            if (res.data.status === true) {
+            if (res && res.data.status) {
                 toast.success(res.data.message);
-                setTimeout(()=>{
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token
+                });
+                localStorage.setItem("auth",JSON.stringify(res.data));
+                setTimeout(() => {
                     navigate("/")
-                },2000);
+                }, 2000);
             }
-            else {
+            else if(res.data.status === false) {
                 toast.error(res.data.message)
             }
         } catch (error) {
             console.log(error)
-            toast.error("catch block error")
+            toast.error("User Not Found")
         }
     }
 
