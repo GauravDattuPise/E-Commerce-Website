@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import dbConnection from './config/db.js'
 import route from "./routes/route.js"
+import cors from 'cors'
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 dbConnection();
 

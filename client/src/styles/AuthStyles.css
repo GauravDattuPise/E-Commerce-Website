@@ -1,0 +1,46 @@
+
+/* //////////////////////////////////////
+Register page css */
+
+.form-controller{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    background-color: #f9f3f3;
+  }
+
+  .form-controller form{
+    box-sizing: border-box;
+    background-color: rgb(253, 251, 251);
+    padding: 40px;
+    border-radius: 20px;
+  }
+
+  .form-controller form input{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    font-size: large;
+  }
+
+  /* font-family: 'Playfair Display', serif; */
+/* font-family: 'Poppins', sans-serif; */
+
+.form-controller h1{
+    font-family: 'Playfair Display', serif;
+    color: #223781;
+}
+
+.form-controller button{
+    width: 250px;
+    font-size: 20px;
+    margin-top: 10px;
+    background-color: black;
+    text-transform: uppercase;
+}
+
+ 
+
+ 
