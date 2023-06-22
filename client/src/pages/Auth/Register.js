@@ -13,6 +13,7 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
+    const [answer, setAnswer] = useState("")
 
     const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:5000/registerUser",{name,email,password,phone,address})
+            const res = await axios.post("http://localhost:5000/registerUser",{name,email,password,phone,address,answer})
             if(res.data.status === true){
                 console.log("data saved successfully");
                 toast.success(res.data.message)
@@ -79,7 +80,6 @@ const Register = () => {
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             className="form-control"
-                            id="exampleInputPassword1"
                             required
                         />
                     </div>
@@ -91,8 +91,6 @@ const Register = () => {
                             value={phone}
                             onChange={(e)=>setPhone(e.target.value)}
                             className="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
                             required
                         />
                     </div>
@@ -104,8 +102,17 @@ const Register = () => {
                             value={address}
                             onChange={(e)=>setAddress(e.target.value)}
                             className="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
+                            required
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            placeholder='Which is your favourite sport ?'
+                            value={answer}
+                            onChange={(e)=>setAnswer(e.target.value)}
+                            className="form-control"
                             required
                         />
                     </div>

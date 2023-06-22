@@ -2,7 +2,7 @@
 import Jwt from "jsonwebtoken";
 import { userModel } from "../models/userModel.js";
 
-// protected route token based
+// TOKEN VERIFICATION
 
 export const requireSignIn = async (req, res, next) => {
     try {
@@ -20,7 +20,7 @@ export const requireSignIn = async (req, res, next) => {
     }
 }
 
-// check admin
+// CHECKING USER IS ADMIN OR NOT
 
 export const isAdmin = async (req, res, next) => {
     try {

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+// function to connect with db
 
 const dbConnection = async () => {
     try {

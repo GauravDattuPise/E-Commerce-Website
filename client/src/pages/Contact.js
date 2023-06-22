@@ -11,14 +11,14 @@ const Contact = () => {
           <img
             src="/images/contactus.jpeg"
             alt="contactus"
-            style={{ width: "100%" }}
+            style={{ width: "88%" , margin : "100px 80px 100px 40px"}}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4" style={{margin : "100px 80px 100px 40px"}}>
           <h1 className="bg-dark p-2 text-white text-center">CONTACT US</h1>
-          <p className="text-justify mt-2">
-            any query and info about prodduct feel free to call anytime we 24X7
-            vaialible
+          <p className="text-justify mt-5">
+            <h4 style={{color : 'blue'}}>Any query and info about product feel free to call anytime we are 24X7
+            available.</h4>
           </p>
           <p className="mt-3">
             <BiMailSend /> : www.help@ecommerceapp.com

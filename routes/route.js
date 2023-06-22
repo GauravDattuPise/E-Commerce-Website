@@ -1,8 +1,10 @@
 
 import  express  from "express";
-import { loginUser, registerUser, testController } from "../controllers/userController.js";
-import { isAdmin, requireSignIn } from "../middlewares/userMiddleware.js";
 const router = express.Router();
+
+import { forgotPassword, loginUser, registerUser, testController } from "../controllers/userController.js";
+import { isAdmin, requireSignIn } from "../middlewares/userMiddleware.js";
+
 
 // REGISTER USER
 router.post("/registerUser", registerUser);
@@ -10,7 +12,16 @@ router.post("/registerUser", registerUser);
 // LOGIN USER
 router.post("/loginUser",loginUser)
 
-// test
-router.get("/test", requireSignIn,isAdmin,testController)
+// ONLY ADMIN CAN ACCESS THIS ROUTE
+router.get("/test", requireSignIn,isAdmin,testController);
+
+// PROTECTED ROUTE (CHECKING USER IS AUTHENTICATED OR NOT)
+router.get("/user-auth",requireSignIn, (req,res)=>{
+    res.status(200).send({ok : true});
+})
+
+// RESET PASSOWORD
+router.post("/forgotPassword",forgotPassword);
+
 
 export default router;

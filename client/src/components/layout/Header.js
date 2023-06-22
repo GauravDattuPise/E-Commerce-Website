@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/Auth";
 import { toast } from "react-hot-toast";
 
+//SHOWS PAGES -- HOME,REGISTER,LOGIN,LOGOUT,CART
+
 export function Header() {
 
     const [auth, setAuth] = useAuth();
@@ -28,6 +30,8 @@ export function Header() {
                         <li className="nav-item active">
                             <NavLink to="/" className="nav-link" >Home <span className="sr-only">(current)</span></NavLink>
                         </li>
+
+                        {/* IF USER IS LOGGED IN THEN SHOW LOGOUT BUTTON */}
                         {
                             !auth.user ? (<>
                                 <li className="nav-item">

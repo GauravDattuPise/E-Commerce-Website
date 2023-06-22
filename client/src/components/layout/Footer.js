@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// FOOTER FOR REDIRECT TO about,contact,privacy policy pages.
 
 export function Footer(){
     return(

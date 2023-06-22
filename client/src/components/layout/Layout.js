@@ -1,30 +1,18 @@
 import { Footer } from "./Footer"
 import { Header } from "./Header"
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import { Toaster } from 'react-hot-toast';
 
-import toast, { Toaster } from 'react-hot-toast';
-
-export function Layout({children, title, description, keywords, author}){
-    return(
+export function Layout({ children, title }) {
+    return (
         <div>
             <Helmet>
-                <meta charSet="utf-8" />
-                <meta name="description" content={description} />
-                <meta name="keywords" content={keywords} />
-                <meta name="author" content={author} />
                 <title>{title}</title>
             </Helmet>
             <Header />
-            <main style={{minHeight : "80vh"}}> {children}</main>
-            <Toaster/>
-           <Footer />
+            <main style={{ minHeight: "80vh" }}> {children}</main>
+            <Toaster />
+            <Footer />
         </div>
     )
-}
-
-Layout.defaultProrps = {
-    title : "E-Commerce Website",
-    description : "mern stack project",
-    keywords : "mern, js, node, react, mongodb, bootstrap, express",
-    author : "Gaurav Pise"
 }
