@@ -7,11 +7,24 @@ import axios from "axios"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/Auth';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [auth, setAuth] = useAuth();
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handlePasswordToggle = () => {
+        if (showPassword === true) {
+            setShowPassword(false)
+        } else {
+            setShowPassword(true)
+        }
+    };
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,12 +40,12 @@ const Login = () => {
                     user: res.data.user,
                     token: res.data.token
                 });
-                localStorage.setItem("auth",JSON.stringify(res.data));
+                localStorage.setItem("auth", JSON.stringify(res.data));
                 setTimeout(() => {
                     navigate(location.state || "/")
                 }, 2000);
             }
-            else if(res.data.status === false) {
+            else if (res.data.status === false) {
                 toast.error(res.data.message)
             }
         } catch (error) {
@@ -63,20 +76,28 @@ const Login = () => {
                     </div>
 
                     <div className="mb-3">
-                        <input
-                            type="password"
-                            placeholder='Enter Your Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="form-control"
-                            id="exampleInputPassword1"
-                            required
-                        />
+                        <div className="input-group">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Enter Your Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="form-control"
+                                required
+                                style={{width : "200px"}}
+                            />
+                            <button
+                                type="button"
+                                onClick={handlePasswordToggle}
+                                style={{ width: "40px", background: "green", border: "none", borderRadius: "10px" }}
+                            >
+                                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+                            </button>
+                        </div>
                     </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
-
-                    <p className='mt-4'style={{cursor : 'pointer'}} onClick={()=>navigate("/forgotPassword")} >forgot-password</p>
+                    <p className='forgot-password mt-4' style={{ cursor: 'pointer', width:"150px"}} onClick={() => navigate("/forgot-password")} >forgot-password</p>
                 </form>
 
             </div>

@@ -9,7 +9,7 @@ import { isAdmin, requireSignIn } from "../middlewares/userMiddleware.js";
 // REGISTER USER
 router.post("/registerUser", registerUser);
 
-// LOGIN USER
+// LOGIN USER 
 router.post("/loginUser",loginUser)
 
 // ONLY ADMIN CAN ACCESS THIS ROUTE
@@ -17,6 +17,11 @@ router.get("/test", requireSignIn,isAdmin,testController);
 
 // PROTECTED ROUTE (CHECKING USER IS AUTHENTICATED OR NOT)
 router.get("/user-auth",requireSignIn, (req,res)=>{
+    res.status(200).send({ok : true});
+})
+
+// PROTECTED ROUTE (CHECKING USER IS ADMIN OR NOT)
+router.get("/admin-auth", requireSignIn, isAdmin, (req,res) => {
     res.status(200).send({ok : true});
 })
 

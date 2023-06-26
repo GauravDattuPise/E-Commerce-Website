@@ -6,6 +6,10 @@ import toast from 'react-hot-toast';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+
 const Register = () => {
 
     const [name, setName] = useState("")
@@ -14,26 +18,36 @@ const Register = () => {
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
     const [answer, setAnswer] = useState("")
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handlePasswordToggle = () => {
+        if (showPassword === true) {
+            setShowPassword(false)
+        } else {
+            setShowPassword(true)
+        }
+    };
 
     const navigate = useNavigate();
 
-   async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:5000/registerUser",{name,email,password,phone,address,answer})
-            if(res.data.status === true){
+            const res = await axios.post("http://localhost:5000/registerUser", { name, email, password, phone, address, answer })
+            if (res.data.status === true) {
                 console.log("data saved successfully");
                 toast.success(res.data.message)
-                setTimeout(()=>{
+                setTimeout(() => {
                     navigate("/login")
-                },2000)            }
-            else{
+                }, 2000)
+            }
+            else {
                 console.log(res);
                 toast.error(res.data.message)
-                setTimeout(()=>{
+                setTimeout(() => {
                     navigate("/login")
-                },2000) 
+                }, 2000)
             }
         } catch (error) {
             toast.error("User Registration failed")
@@ -45,14 +59,14 @@ const Register = () => {
         <Layout title={"Register E-Commerce-app"}>
             <div className='form-controller'>
 
-                <form onSubmit={handleSubmit} className='mt-3'>
-                <h1 className='mb-4'>Register User</h1>
+                <form onSubmit={handleSubmit} className='mt-2'>
+                    <h1 className='mb-4'>Register User</h1>
                     <div className="mb-3">
                         <input
                             type="text"
                             placeholder='Enter Your Name'
                             value={name}
-                            onChange={(e)=> setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             className="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
@@ -65,7 +79,7 @@ const Register = () => {
                             type="email"
                             placeholder='Enter Your Email'
                             value={email}
-                            onChange={(e)=>setEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
@@ -73,15 +87,26 @@ const Register = () => {
                         />
                     </div>
 
-                    <div className="mb-3">
-                        <input
-                            type="password"
-                            placeholder='Enter Your Password'
-                            value={password}
-                            onChange={(e)=>setPassword(e.target.value)}
-                            className="form-control"
-                            required
-                        />
+                    <div className="mb-3" id="password">
+                        <div className="input-group">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Enter Your Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="form-control"
+                                required
+                                style={{width : "200px"}}
+                            />
+                            <button
+                                type="button"
+                                onClick={handlePasswordToggle}
+                                style={{ width: "40px", background: "green", border : "none", borderRadius : "10px" }}
+                            >
+                                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+
+                            </button>
+                        </div>
                     </div>
 
                     <div className="mb-3">
@@ -89,7 +114,7 @@ const Register = () => {
                             type="text"
                             placeholder='Enter Your Phone'
                             value={phone}
-                            onChange={(e)=>setPhone(e.target.value)}
+                            onChange={(e) => setPhone(e.target.value)}
                             className="form-control"
                             required
                         />
@@ -100,7 +125,7 @@ const Register = () => {
                             type="text"
                             placeholder='Enter Your Address'
                             value={address}
-                            onChange={(e)=>setAddress(e.target.value)}
+                            onChange={(e) => setAddress(e.target.value)}
                             className="form-control"
                             required
                         />
@@ -109,15 +134,15 @@ const Register = () => {
                     <div className="mb-3">
                         <input
                             type="text"
-                            placeholder='Which is your favourite sport ?'
+                            placeholder='What is your favourite sport'
                             value={answer}
-                            onChange={(e)=>setAnswer(e.target.value)}
+                            onChange={(e) => setAnswer(e.target.value)}
                             className="form-control"
                             required
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">register</button>
                 </form>
 
             </div>

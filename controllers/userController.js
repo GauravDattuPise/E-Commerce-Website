@@ -77,7 +77,8 @@ export const loginUser = async (req,res) => {
                 name : user.name,
                 email : user.email,
                 phone : user.phone,
-                address : user.address
+                address : user.address,
+                role : user.role
             },
             message : "Logged In Successfully",
             token : token

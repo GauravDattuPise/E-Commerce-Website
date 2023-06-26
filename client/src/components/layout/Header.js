@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/Auth";
 import { toast } from "react-hot-toast";
 
+
 //SHOWS PAGES -- HOME,REGISTER,LOGIN,LOGOUT,CART
 
 export function Header() {
@@ -25,7 +26,7 @@ export function Header() {
                     <span className="navbar-toggler-icon" />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <Link className="navbar-brand" >Hidden brand</Link>
+                    <Link className="navbar-brand" >Ecommerce Website</Link>
                     <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li className="nav-item active">
                             <NavLink to="/" className="nav-link" >Home <span className="sr-only">(current)</span></NavLink>
@@ -43,17 +44,27 @@ export function Header() {
                             </>)
                                 :
                                 (<>
-                                    <li className="nav-item">
-                                        <NavLink onClick={handleLogout} to="/login" className="nav-link">Logout</NavLink>
-                                    </li>
+                                    <div className="dropdown">
+                                        <button className="btn btn-secondary dropdown-toggle" style={{border : "none",background : "white", color :"black" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {auth?.user?.name}
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li><NavLink onClick={handleLogout} to="/login" className="dropdown-item">Logout</NavLink></li>
+                                            <li><NavLink to = {`/dash-board/${auth?.user?.role === 1 ? "admin" : "user"}`} className="dropdown-item">DashBoard</NavLink></li>
+                                        </ul>
+                                    </div>
                                 </>)
                         }
+
                         <li className="nav-item">
                             <NavLink to="/cart" className="nav-link">cart (0)</NavLink>
                         </li>
                     </ul>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     )
 }
+
+
+export default Header;

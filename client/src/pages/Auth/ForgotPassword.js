@@ -6,11 +6,25 @@ import toast from 'react-hot-toast';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
+// password icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+
 const ForgotPassword = () => {
 
     const [email, setEmail] = useState("")
     const [answer, setAnswer] = useState("")
     const [newPassword, setNewPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handlePasswordToggle = () => {
+        if (showPassword === true) {
+            setShowPassword(false)
+        } else {
+            setShowPassword(true)
+        }
+    };
 
     const navigate = useNavigate();
 
@@ -51,28 +65,39 @@ const ForgotPassword = () => {
                             required
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="mt-3">
                         <input
                             type="text"
-                            placeholder='Which is your favourite sport ?'
+                            placeholder='What is your favourite sport'
                             value={answer}
                             onChange={(e) => setAnswer(e.target.value)}
                             className="form-control"
                             required
                         />
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            type="password"
-                            placeholder='Enter Your New Password'
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            className="form-control"
-                            required
-                        />
+
+                        <div className="mt-3">
+                            <div className="input-group">
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Enter Your New Password"
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    className="form-control"
+                                    required
+                                    style={{width : "200px"}}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={handlePasswordToggle}
+                                    style={{ width: "40px", background: "green", border: "none", borderRadius: "10px" }}
+                                >
+                                    <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary mt-4">Reset</button>
                 </form>
 
             </div>

@@ -9,12 +9,14 @@ Register page css */
     flex-direction: column;
     height: 80vh;
     background-color: #f9f3f3;
+    /* background-color: antiquewhite; */
   }
 
   .form-controller form{
     box-sizing: border-box;
     background-color: rgb(253, 251, 251);
-    padding: 40px;
+    padding: 20px;
+    padding-right: 45px;
     border-radius: 20px;
   }
 
@@ -22,7 +24,8 @@ Register page css */
     border: none;
     border-bottom: 1px solid black;
     border-radius: 0px;
-    font-size: large;
+    font-size: larger;
+    font-family: bold;
   }
 
   /* font-family: 'Playfair Display', serif; */
@@ -32,12 +35,14 @@ Register page css */
     font-family: 'Playfair Display', serif;
     color: #223781;
     text-align : center;
+    margin-left: 30px;
 }
 
 .form-controller button{
     width: 270px;
     font-size: 20px;
     margin-top: 10px;
+    margin-left: 30px;
     background-color: rgba(0, 0, 0, 0.728);
     text-transform: uppercase;
 }
@@ -48,12 +53,16 @@ Register page css */
 
 .form-controller input{
   width: 270px;
+  margin-left: 30px;
 }
 
  /* forgot password */
-form p{
-  color: rgb(59, 59, 190);
+.forgot-password{
+  color: rgb(75, 12, 223);
+  font-weight: bolder;  
+}
+.forgot-password:hover{
   text-decoration: underline;
-  font-weight: bolder;
+  color: red;
 }
  
