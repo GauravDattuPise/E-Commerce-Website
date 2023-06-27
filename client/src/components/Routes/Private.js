@@ -28,7 +28,7 @@ const Private = () => {
         }
     }, [auth?.token]);
 
-    return ok ? <Outlet /> : <Spinner/>
+    return ok ? <Outlet /> : <Spinner path="" /> 
 }
 
 export default Private

@@ -4,10 +4,10 @@ import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
 
 export function Layout({ children, title }) {
+    
     console.log("this is children",children)
     return (
-        <div>
-            
+        <div>            
             <Helmet>
                 <title>{title}</title>
             </Helmet>

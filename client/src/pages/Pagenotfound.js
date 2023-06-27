@@ -10,7 +10,7 @@ const Pagenotfound = () => {
         <h3 style={{marginTop : "10px"}}>Page Not Found</h3>
         <p>Oops! the page you are looking for does not exist. It might have been moved or deleted.</p>
         <Link to="/">
-        <button style={{marginTop : "40px",fontSize : "20px", backgroundColor: 'blue', color: 'white', padding: '15px', borderRadius: '8px', cursor: 'pointer' }}>Back To Home</button>
+        <button style={{marginTop : "40px",fontSize : "20px", backgroundColor: 'blue', color: 'white', padding: '10px', borderRadius: '8px', cursor: 'pointer' }}>Back To Home</button>
         </Link>
       </div>
     </Layout> 

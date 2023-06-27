@@ -6,8 +6,8 @@ import dbConnection from './config/db.js'
 import route from "./routes/route.js"
 
 
-dotenv.config();
-
+dotenv.config(); 
+ 
 // REST OBJECT
 const app = express();
 
