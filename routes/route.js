@@ -22,7 +22,7 @@ router.get("/user-auth",requireSignIn, (req,res)=>{
 
 // PROTECTED ROUTE (CHECKING USER IS ADMIN OR NOT)
 router.get("/admin-auth", requireSignIn, isAdmin, (req,res) => {
-    res.status(200).send({ok : true}); 
+    res.status(200).send({ok : true});  
 }) 
 
 // RESET PASSOWORD

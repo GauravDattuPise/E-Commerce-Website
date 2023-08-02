@@ -30,7 +30,7 @@ export const registerUser = async (req,res) => {
         }
 
         // CHECK USER
-        const existingUser = await userModel.findOne({email});
+        const existingUser = await userModel.findOne({email : email})
         if(existingUser){
             return res.status(200).send({status : false, message : "Already registered, Go to Login"})
         }
