@@ -18,6 +18,7 @@ app.use(cors());
 // FUNCTION TO CONNECT WITH DB
 dbConnection();
 
+// routes 
 app.use("/", route);
 app.use("/category", categoryRoutes);
 app.use("/product/", productRoutes);
