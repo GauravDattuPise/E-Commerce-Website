@@ -25,7 +25,8 @@ app.use("/product/", productRoutes);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`server is running on ${PORT}`)
+    console.log(`server is running on port ${PORT}`)//gkuyguygu
 });
 
 // server is running on 500
+// askdjfsdjf
